@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css') }}">
+
+    <title>Pagina principal</title>
+
+</head>
+<body>
+    
+    <div class="container-comentario">
+
+        <h1>FEEDBACK🌻</h1>
+
+        <h2>Master página</h2>
+
+       <form action="/post/mensagem" method="POST" class="form-comentario">
+    
+        <label for="label-usuario">Usuário</label>
+        <input type="text" placeholder="Digite seu nome" name="usuario">
+
+    
+        <label for="label-comentario">Comentário</label>
+        <input type="text" placeholder="Escreva seu comentário" name="mensagem">
+        
+        <button type="submit" class="button">ENVIAR 💛</button>
+
+        </form> 
+
+
+    </div>
+    
+
+    
+    
+
+</body>
+</html>

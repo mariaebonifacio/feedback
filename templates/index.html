@@ -32,9 +32,12 @@
         </form>
 
         <section>
-            <div class="container-resultado">
-                
+            {% for mensagem in mensagem}
+            <div class="container-mensagens">
+                <strong>{{mensagem.usuario}} ({{mensagem.data_hora}})</strong>
+                <p>{{mensagem.mensagem}}</p>
             </div>
+            {% endfor %}
         </section>
 
     </div>

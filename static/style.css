@@ -16,7 +16,7 @@ body{
     justify-content: space-around;
     gap: 20px;
     position: relative;
-    top: 250px;
+    top: 50px;
 }
 
 h1{
@@ -63,8 +63,13 @@ h2{
     box-shadow: yellow;
 }
 
-.container-resultado{
+.container-mensagens{
+    position: absolute;
     width: 500px;
-    height: 500px;
-    background-color: lightyellow;
+    height: 290px;
+    background-color: yellow;
+    top: 350px;
+    left: 525px;
+    border: 2px;
+    border-radius: 20px;
 }

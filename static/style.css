@@ -62,3 +62,9 @@ h2{
     color: yellow;
     box-shadow: yellow;
 }
+
+.container-resultado{
+    width: 500px;
+    height: 500px;
+    background-color: lightyellow;
+}

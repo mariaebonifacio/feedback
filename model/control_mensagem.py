@@ -1,0 +1,57 @@
+from data.conexao import Conexao
+import datetime
+
+class Mensagem:
+    def cadastrar_mensagem(usuario, comentario):
+        data_hora = datetime.datetime.today()
+
+        # CADASTRANDO AS INFORMAÇÕES NO BANCO DE DADOS
+        # Criando a conexão
+
+        conexao = Conexao.criar_conexao()
+
+        # O cursor será responsável por manipular o banco de dados
+        cursor = conexao.cursor()
+
+        # Criando o SQL que será executado
+        sql = """INSERT INTO tb_comentarios
+                    (nome, comentario, data_hora)
+                    VALUES
+                    (%s, %s, %s)"""
+        
+        valores = (usuario, comentario, data_hora)
+
+        # Executando o comando SQL
+        cursor.execute(sql,valores)
+
+        # Confirmo a alteração
+        conexao.commit()
+
+        # Fecho a conexão com o Banco
+        cursor.close()
+        conexao.close()
+
+    def recuperar_mensagens():
+        # Criar conexão
+        conexao = Conexao.criar_conexao()
+
+        # O cursor será responsável por manipular o banco de dados
+        # Dictionary vai devolver as informações
+        cursor = conexao.cursor(dictionary = True)
+
+            # criando o SQL que será executado
+        sql = """SELECT nome as usuario,
+                            comentario as mensagem,
+                            data_hora
+                            FROM tb_comentarios"""
+        
+        # Executando o comando SQL 
+        cursor.execute(sql)
+
+        # Recuperando os dados e guardadndo em uma variável
+        resultado = cursor.fetchall()
+
+        # Fecho a conexão com o banco
+        conexao.close()
+       
+        return resultado

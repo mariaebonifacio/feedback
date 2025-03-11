@@ -9,3 +9,5 @@ create table tb_comentarios(
     cod_comentario int auto_increment primary key
 
 );
+
+select * from tb_comentarios;

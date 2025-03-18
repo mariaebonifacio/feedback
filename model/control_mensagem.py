@@ -15,11 +15,11 @@ class Mensagem:
 
         # Criando o SQL que será executado
         sql = """INSERT INTO tb_comentarios
-                    (nome, comentario, data_hora)
+                    (nome, data_hora, comentario)
                     VALUES
                     (%s, %s, %s)"""
         
-        valores = (usuario, comentario, data_hora)
+        valores = (usuario, data_hora, comentario)
 
         # Executando o comando SQL
         cursor.execute(sql,valores)
@@ -55,3 +55,21 @@ class Mensagem:
         conexao.close()
        
         return resultado
+
+    def deletar_mensagens(codigo):
+       # Criar conexão
+        conexao = Conexao.criar_conexao()
+        
+        cursor = conexao.cursor()
+        
+        sql = """delete from tb_comentarios where cod_comentario = 6;"""
+        valores=(codigo,)
+       
+       # Executando o comando SQL 
+        cursor.execute(sql,valores)
+        
+        # Comitando para gravar as alterações
+        cursor.commit()
+        
+        # fechando conexão
+        conexao.close()

@@ -65,11 +65,65 @@ h2{
 
 .container-mensagens{
     position: absolute;
-    width: 500px;
+    width: 800px;
     height: 290px;
     background-color: yellow;
     top: 350px;
-    left: 525px;
+    left: 215px;
     border: 2px;
     border-radius: 20px;
+}
+
+.mensagens {
+    background-color: yellow;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.mensagem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 755px;
+    height: 95px;
+}
+
+.mensagem p {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.mensagem p::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: yellow;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.btn-excluir{
+    width: 100px;
+    background-color: yellow;
+    border: none;
+    border-radius: 15px;
+}
+
+.btn-excluir a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
 }

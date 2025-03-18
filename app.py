@@ -11,7 +11,9 @@ app = Flask(__name__)
 # ROTA PARA A PÁGINA INICIAL
 @app.route("/")
 def pagina_principal():
-    return render_template("index.html")
+    mensagens = Mensagem.recuperar_mensagens()
+    return render_template("index.html", mensagens = mensagens)
+
 
 # ROTA PARA A PÁGINA DE CADASTRAR MENSAGEM
 @app.route("/post/mensagem", methods = ["POST"])
@@ -24,6 +26,15 @@ def post_mensagem():
     Mensagem.cadastrar_mensagem(usuario, mensagem)
 
     # Redireciona para o index
+    return redirect("/")
+
+@app.route("/delete/mensagem/<codigo>")
+def delete_mensagem(codigo):
+    Mensagem.deletar_mensagens(codigo)
+    return redirect("/")
+
+@app.route("/put/mensagens/adicionar/curtida/<codigo>")
+def adicionar_curtida(codigo):
     return redirect("/")
 
 app.run(debug=True)

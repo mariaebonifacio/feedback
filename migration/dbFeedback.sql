@@ -1,5 +1,5 @@
-create database dbFeedback;
-use dbFeedback;
+create database db_feedback;
+use db_feedback;
 
 create table tb_comentarios(
 

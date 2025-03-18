@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="{{url_for('static',filename='style.css') }}">
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
 
     <title>Pagina principal</title>
 
@@ -29,16 +29,18 @@
         
         <button type="submit" class="button">ENVIAR 💛</button>
 
-        </form>
-
-        <section>
-            {% for mensagem in mensagem}
-            <div class="container-mensagens">
-                <strong>{{mensagem.usuario}} ({{mensagem.data_hora}})</strong>
+        <div class="mensagens">
+            {% for mensagem in mensagens %}
+            <div class="mensagem">
+                <strong>{{mensagem.usuario}}</strong>{{mensagem.data_hora}}
                 <p>{{mensagem.mensagem}}</p>
+                <button class="btn-excluir"><a href="/delete/mensagem/{{mensagem.cod_comentario}}">Excluir</a></button>
+
+                <link rel="stylesheet" href="/image/verde.png">
+                <link rel="stylesheet" href="/image/incorreta.png">
             </div>
             {% endfor %}
-        </section>
+        </div>
 
     </div>
 

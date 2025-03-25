@@ -1,7 +1,9 @@
 from data.conexao import Conexao
 import datetime
 
+# 
 class Mensagem:
+    
     def cadastrar_mensagem(usuario, comentario):
         data_hora = datetime.datetime.today()
 
@@ -31,6 +33,8 @@ class Mensagem:
         cursor.close()
         conexao.close()
 
+# ------------------------------------------------------------------------------
+
     def recuperar_mensagens():
         # Criar conexão
         conexao = Conexao.criar_conexao()
@@ -42,7 +46,8 @@ class Mensagem:
             # criando o SQL que será executado
         sql = """SELECT nome as usuario,
                             comentario as mensagem,
-                            data_hora
+                            data_hora,
+                            cod_comentario as codigo
                             FROM tb_comentarios"""
         
         # Executando o comando SQL 
@@ -56,20 +61,37 @@ class Mensagem:
        
         return resultado
 
+# ------------------------------------------------------------------------------------
+
     def deletar_mensagens(codigo):
        # Criar conexão
         conexao = Conexao.criar_conexao()
         
         cursor = conexao.cursor()
         
-        sql = """delete from tb_comentarios where cod_comentario = 6;"""
+        sql = "delete from tb_comentarios where cod_comentario = %s;"
         valores=(codigo,)
        
        # Executando o comando SQL 
         cursor.execute(sql,valores)
         
         # Comitando para gravar as alterações
-        cursor.commit()
+        conexao.commit()
+        
+        cursor.close()
         
         # fechando conexão
         conexao.close()
+        
+# ----------------------------------------------------------
+def adicionar_curtidas(codigo):
+    conexao = Conexao.criar_conexao()
+    cursor = conexao.cursor()
+    
+    sql = "UPDATE tb_comentarios SET curtidas = curtidas + 1 WHERE cod_comentario = %s"
+    valores = (codigo, )
+    
+    cursor.execute(sql, valores)
+    conexao.commit()
+    cursor.close()
+    conexao.close()

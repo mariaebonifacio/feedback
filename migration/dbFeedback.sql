@@ -11,3 +11,9 @@ create table tb_comentarios(
 );
 
 select * from tb_comentarios;
+
+UPDATE tb_coemntarios
+SET curtidas = curtidas + 1
+WHERE cod_comentario = 56;
+
+set sql_safe_update = 0;

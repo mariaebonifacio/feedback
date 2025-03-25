@@ -34,10 +34,10 @@
             <div class="mensagem">
                 <strong>{{mensagem.usuario}}</strong>{{mensagem.data_hora}}
                 <p>{{mensagem.mensagem}}</p>
-                <button class="btn-excluir"><a href="/delete/mensagem/{{mensagem.cod_comentario}}">Excluir</a></button>
+                <button class="btn-excluir"><a href="/delete/mensagem/{{mensagem.codigo}}">Excluir</a></button>
 
-                <link rel="stylesheet" href="/image/verde.png">
-                <link rel="stylesheet" href="/image/incorreta.png">
+                <link class="image-like" rel="stylesheet" href="/image/verde.png">
+                <link class="image-dislike" rel="stylesheet" href="/image/incorreta.png">
             </div>
             {% endfor %}
         </div>

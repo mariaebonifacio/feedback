@@ -17,9 +17,9 @@ class Mensagem:
 
         # Criando o SQL que será executado
         sql = """INSERT INTO tb_comentarios
-                    (nome, data_hora, comentario)
+                    (nome, data_hora, comentario, curtidas)
                     VALUES
-                    (%s, %s, %s)"""
+                    (%s, %s, %s, %s)"""
         
         valores = (usuario, data_hora, comentario)
 
@@ -47,7 +47,8 @@ class Mensagem:
         sql = """SELECT nome as usuario,
                             comentario as mensagem,
                             data_hora,
-                            cod_comentario as codigo
+                            cod_comentario as codigo,
+                            curtidas
                             FROM tb_comentarios"""
         
         # Executando o comando SQL 
@@ -84,14 +85,25 @@ class Mensagem:
         conexao.close()
         
 # ----------------------------------------------------------
-def adicionar_curtidas(codigo):
-    conexao = Conexao.criar_conexao()
-    cursor = conexao.cursor()
-    
-    sql = "UPDATE tb_comentarios SET curtidas = curtidas + 1 WHERE cod_comentario = %s"
-    valores = (codigo, )
-    
-    cursor.execute(sql, valores)
-    conexao.commit()
-    cursor.close()
-    conexao.close()
+    def adicionar_curtidas(codigo):
+        conexao = Conexao.criar_conexao()
+        cursor = conexao.cursor()
+        
+        sql = "UPDATE tb_comentarios SET curtidas = curtidas + 1 WHERE cod_comentario = %s"
+        valores = (codigo, )
+        
+        cursor.execute(sql, valores)
+        conexao.commit()
+        conexao.close()
+
+    # ----------------------------------------------------------
+    def adicionar_dislike(codigo):
+        conexao = Conexao.criar_conexao()
+        cursor = conexao.cursor()
+        
+        sql = "UPDATE tb_comentarios SET curtidas = curtidas - 1 WHERE cod_comentario = %s"
+        valores = (codigo, )
+        
+        cursor.execute(sql, valores)
+        conexao.commit()
+        conexao.close()

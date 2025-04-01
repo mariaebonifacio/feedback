@@ -29,15 +29,23 @@
         
         <button type="submit" class="button">ENVIAR 💛</button>
 
+        </form>
         <div class="mensagens">
             {% for mensagem in mensagens %}
             <div class="mensagem">
-                <strong>{{mensagem.usuario}}</strong>{{mensagem.data_hora}}
-                <p>{{mensagem.mensagem}}</p>
-                <button class="btn-excluir"><a href="/delete/mensagem/{{mensagem.codigo}}">Excluir</a></button>
+                <p> {{mensagem.mensagem}}</p>
+                <strong>{{mensagem.usuario}}</strong>
+                {{mensagem.data_hora}}
 
-                <link class="image-like" rel="stylesheet" href="/image/verde.png">
-                <link class="image-dislike" rel="stylesheet" href="/image/incorreta.png">
+                <div class="botoes">
+                    <a href="/delete/mensagem/{{mensagem.codigo}}"><button class="btn-excluir">Excluir</button></a>
+
+                    <a href="/put/mensagens/adicionar/curtida/{{mensagem.codigo}}"><button class="btn-avaliacao like">Like</button></a>
+
+                    <a href="/put/mensagens/adicionar/dislike/{{mensagem.codigo}}"><button class="btn-avaliacao dislike">Dislike</button></a>
+
+                    <p>{{mensagem.curtidas}}</p>
+                </div>
             </div>
             {% endfor %}
         </div>

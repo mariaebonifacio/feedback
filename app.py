@@ -39,11 +39,19 @@ def delete_mensagem(codigo):
 # adicionar curtidas ------------------------------------
 
 @app.route("/put/mensagens/adicionar/curtida/<codigo>")
-def adicionar_curtida(codigo):
-    
+def adicionar_curtidas(codigo):
+    Mensagem.adicionar_curtidas(codigo)
+
     return redirect("/")
 
+
+# adicionar dislike ------------------------------------
+
+@app.route("/put/mensagens/adicionar/dislike/<codigo>")
+def adicionar_dislike(codigo):
+    Mensagem.adicionar_dislike(codigo)
+
+    return redirect("/")
+
+
 app.run(debug=True)
-
-# dislike -----------------------------------------------
-

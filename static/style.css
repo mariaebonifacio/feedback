@@ -95,7 +95,8 @@ h2{
     margin-bottom: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 755px;
-    height: 95px;
+    height: 130px;
+    gap: 5px;
 }
 
 .mensagem p {
@@ -115,8 +116,10 @@ h2{
     margin-right: 5px;
 }
 
+
 .btn-excluir{
     width: 100px;
+    height: 25px;
     background-color: yellow;
     border: none;
     border-radius: 15px;
@@ -126,4 +129,32 @@ h2{
     text-decoration: none;
     color: black;
     font-weight: bold;
+}
+
+
+.btn-avaliacao{
+    width: 50px;
+    height: 25px;
+    /* display: flex; */
+    border-radius: 15px;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: orange;
+    font-weight: bold;
+}
+
+
+.botoes{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 600px;
+    margin-left: 185px;
+}
+
+.botoes p{
+    width: 50px;
+
 }

@@ -3,13 +3,14 @@ import mysql.connector
 import datetime
 from data.conexao import Conexao
 from model.control_mensagem import Mensagem 
+from model.control_usuario import Usuario
 
 app = Flask(__name__)
 
 # Aqui vão as minhas rotas.
 
 # ROTA PARA A PÁGINA INICIAL ------------------------------------
-@app.route("/")
+@app.route("/comentario")
 def pagina_principal():
     mensagens = Mensagem.recuperar_mensagens()
     return render_template("index.html", mensagens = mensagens)
@@ -54,5 +55,27 @@ def adicionar_dislike(codigo):
     return redirect("/")
 
 
+# CADASTRAR USUÁRIO ---------------------------------------------------
+@app.route("/")
+def cadastro_usuario():
+    #Recuperar usuario
+    usuarios = Usuario.recuperar_usuario()
+
+    return render_template("cadastrarUsuario.html", usuarios = usuarios)
+
+@app.route("/post/cadastrarusuario", methods = ["POST"])
+def post_usuario():
+    # Peguei as informações vinda do usuário
+    login = request.form.get("login")
+    nome = request.form.get("nome")
+    senha = request.form.get("senha")
+
+    # Cadastrando a mensagem usando a classe Mensagem
+    Usuario.cadastro_usuario(login, nome, senha)
+   
+    # Rediriciona para o index
+    return redirect("/")
+
+app.run(debug=True)
 
 app.run(debug=True)

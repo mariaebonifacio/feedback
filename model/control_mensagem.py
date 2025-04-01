@@ -17,9 +17,9 @@ class Mensagem:
 
         # Criando o SQL que será executado
         sql = """INSERT INTO tb_comentarios
-                    (nome, data_hora, comentario, curtidas)
+                    (nome, data_hora, comentario)
                     VALUES
-                    (%s, %s, %s, %s)"""
+                    (%s, %s, %s)"""
         
         valores = (usuario, data_hora, comentario)
 

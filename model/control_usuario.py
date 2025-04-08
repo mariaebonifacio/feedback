@@ -1,4 +1,6 @@
-from data.conexao import Conexao
+from data.conexao import Conexao 
+from hashlib import sha256
+from flask import session
 
 class Usuario:
     def cadastro_usuario(login, nome, senha):
@@ -58,7 +60,7 @@ class Usuario:
 
         cursor = conexao.cursor()
 
-        sql = """SELECT * FROM 
+        sql = """SELECT login, nome FROM tb_usuarios 
                     WHERE login = %s
                     AND binary senha = %s"""
         
@@ -70,3 +72,9 @@ class Usuario:
         resultado = cursor.fetchone
 
         # if resultado - continuacao proxima aula
+        if resultado: 
+            session['usuario'] = resultado['login']
+            session['nome_usuario'] = resultado['nome']
+            return True
+        else:
+            return False

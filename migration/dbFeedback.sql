@@ -17,3 +17,38 @@ SET curtidas = curtidas + 1
 WHERE cod_comentario = 56;
 
 set sql_safe_update = 0;
+
+-- MATERIALIZE
+-- <div class="result2">
+
+--             <table>
+--                 <thead>
+--                     <td>
+--                         LOGIN
+--                     </td>
+--                     <td>
+--                         NOME
+--                     </td>
+--                     <td>
+--                         SENHA
+--                     </td>
+--                 </thead>
+
+--                 {% for usuario in usuarios %}
+--                 <div class="mensagem">
+--                     <tr>
+--                         <td>
+--                             {{usuario.login}}
+--                         </td>
+--                         <td>
+--                             {{usuario.nome}}
+--                         </td>
+--                         <td>
+--                             {{usuario.senha}}
+--                         </td>
+                       
+--                     </tr>
+--                 </div>
+--                 {% endfor %}
+--         </table>
+--   </div>

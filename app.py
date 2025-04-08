@@ -94,9 +94,9 @@ def pagina_login():
 @app.route("/post/logar", methods = ["POST"])
 def post_logar():
 
-    usuario = request.form.get("login")
+    login = request.form.get("login")
     senha = request.form.get("senha")
-    esta_logado = Usuario.logar(usuario,senha)
+    esta_logado = Usuario.logar(login,senha)
 
     if esta_logado:
         return redirect("/comentario")

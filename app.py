@@ -117,6 +117,7 @@ def api_get_mensagens():
     return jsonify(mensagens)
 
 
+# API PARA PEGAR A ÚLTIMA MENSAGEM
 @app.route("/api/get/ultimamensagem/<nome>")
 def api_get_ultima_mensagem(nome):
     mensagem = Mensagem.ultima_mensagem(nome)

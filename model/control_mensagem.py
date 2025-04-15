@@ -107,3 +107,34 @@ class Mensagem:
         cursor.execute(sql, valores)
         conexao.commit()
         conexao.close()
+
+    # ----------------------------------------------------------
+        
+    def recuperar_mensagens(nome):
+        # Criar conexão
+        conexao = Conexao.criar_conexao()
+
+        # O cursor será responsável por manipular o banco de dados
+        # Dictionary vai devolver as informações
+        cursor = conexao.cursor(dictionary = True)
+
+            # criando o SQL que será executado
+        sql = """SELECT comentario 
+                 FROM tb_comentarios 
+                 WHERE nome = %s 
+                 ORDER BY data_hora 
+                 DESC LIMIT 1"""
+        
+        valores = (nome,)
+
+        # Executando o comando SQL 
+        cursor.execute(sql, valores)
+
+        # Recuperando os dados e guardadndo em uma variável
+        resultado = cursor.fetchone()
+
+        # Fecho a conexão com o banco
+        conexao.close()
+       
+        return resultado
+        

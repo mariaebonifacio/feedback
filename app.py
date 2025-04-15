@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, jsonify
 import mysql.connector
 import datetime
 from data.conexao import Conexao
@@ -12,7 +12,7 @@ app.secret_key = "maria123"
 
 # Aqui vão as minhas rotas.
 
-# ROTA PARA A PÁGINA INICIAL ------------------------------------
+# ROTA PARA A PÁGINA INICIAL ----------------------------------------------------------------------------------------
 @app.route("/comentario")
 def pagina_principal():
     if "usuario" in session:
@@ -22,7 +22,7 @@ def pagina_principal():
         return redirect ("/login")
 
 
-# ROTA PARA A PÁGINA DE CADASTRAR MENSAGEM -------------------------
+# ROTA PARA A PÁGINA DE CADASTRAR MENSAGEM ---------------------------------------------------------------------------
 @app.route("/post/mensagem", methods = ["POST"])
 def post_mensagem():
     
@@ -37,14 +37,14 @@ def post_mensagem():
     return redirect("/comentario")
 
 
-# DELETAR MENSAGENS ----------------------------------
+# DELETAR MENSAGENS ---------------------------------------------------------------------------------------------------
 @app.route("/delete/mensagem/<codigo>")
 def delete_mensagem(codigo):
     Mensagem.deletar_mensagens(codigo)
     return redirect("/comentario")
 
 
-# adicionar curtidas ------------------------------------
+# adicionar curtidas ---------------------------------------------------------------------------------------------------
 @app.route("/put/mensagens/adicionar/curtida/<codigo>")
 def adicionar_curtidas(codigo):
     Mensagem.adicionar_curtidas(codigo)
@@ -105,7 +105,23 @@ def post_logar():
 
 
 
-# Login ------------------------------------------------------------------------------
+# Login -------------------------------------------------------------------------------------------------------------------
+
+
+
+
+# API -----------------------------------------------------------------------------------------------------------------------
+@app.route("/api/get/mensagens")
+def api_get_mensagens():
+    mensagens = Mensagem.recuperar_mensagens()
+    return jsonify(mensagens)
+
+
+@app.route("/api/get/ultimamensagem/<nome>")
+def api_get_ultima_mensagem(nome):
+    mensagem = Mensagem.ultima_mensagem(nome)
+    return jsonify(mensagem)
+
 
 
 

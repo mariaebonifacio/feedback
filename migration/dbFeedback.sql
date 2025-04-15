@@ -12,7 +12,7 @@ create table tb_comentarios(
 
 select * from tb_comentarios;
 
-UPDATE tb_coemntarios
+UPDATE tb_comentarios
 SET curtidas = curtidas + 1
 WHERE cod_comentario = 56;
 

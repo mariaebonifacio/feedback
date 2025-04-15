@@ -18,11 +18,12 @@
 .container-cadastro{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content:center;
     width: 500px;
-    height: 350px;
+    height: 400px;
     background-color: orange;
     margin: 100px auto;
+    padding: 20px;
     border-radius: 20px;
 }
 
@@ -52,3 +53,18 @@
     height: 40px;
     font-weight: bold;
 }
+
+.btn-pagina-login{
+    width: 70px;
+    height: 25px;
+    display: flex;
+    background-color: orange;
+    border-radius: 15px;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-weight: bold;
+    margin: 100px auto;
+}
+
